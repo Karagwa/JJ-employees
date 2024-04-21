@@ -35,8 +35,6 @@ public class Fulltime extends Employee{
 
         }
 
-        for(Fulltime f: employee){
-            f.printStaffDetails();
-        }
+        
     }
 }
