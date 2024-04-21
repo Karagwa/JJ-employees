@@ -28,13 +28,17 @@ public class Fulltime extends Employee{
         System.out.println("Enter the number of fulltime employees: ");
         int numberOfEmployees=keyboard.nextInt();
         Fulltime [] employee= new Fulltime[numberOfEmployees];
-        for (Fulltime staff: employee){
-            staff =new Fulltime();
-            staff.enterDetails();
-            staff.getNetPay();
+       
+        for (int i=0; i<employee.length; i++){
+            employee[i] =new Fulltime();
+            employee[i].enterDetails();
+            employee[i].getNetPay();
 
         }
 
+        for(Fulltime f: employee){
+            f.printStaffDetails();
+        }
         
     }
 }
