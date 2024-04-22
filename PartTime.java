@@ -4,6 +4,7 @@ public class PartTime extends Employee{
     public final int rate=2500;
     public double totalPay;
     public double tax=0.3*totalPay;
+    public double netPay=totalPay-tax;
     public int year;
     public String month;
 
@@ -59,7 +60,7 @@ public class PartTime extends Employee{
         System.out.println("StaffNo: "+StaffNo);
         System.out.println("StaffName: "+StaffName);
         System.out.println("StaffAge: "+StaffAge);
-        System.out.println("StaffSalary: "+totalPay);
+        System.out.println("StaffSalary: "+netPay);
         System.out.println();
     }
 
