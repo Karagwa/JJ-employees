@@ -1,4 +1,7 @@
 import java.util.*;
+
+import java.time.YearMonth;
+import java.time.Month;
 public class PartTime extends Employee{
     public int numberOfHours;
     public final int rate=2500;
@@ -23,35 +26,26 @@ public class PartTime extends Employee{
         keyboard.nextLine();
         System.out.println("Enter the month of employment:");
         month= keyboard.nextLine();
-        System.out.println("Enter the number of hours worked:");
-        numberOfHours=keyboard.nextInt();
-        keyboard.nextLine();
+        
         
     }
 
 
     
-ArrayList<String> month30 = new ArrayList<>(Arrays.asList("april","june","september","november"));
-ArrayList<String> month31 = new ArrayList<>(Arrays.asList("january","march","may","july","august","october","december"));
+    public void calculateTotalPay() {
+        int daysInMonth = 0;
+        YearMonth yearMonth = YearMonth.of(year, Month.valueOf(month.toUpperCase()));
+        daysInMonth = yearMonth.lengthOfMonth();
+        for(int i = 0; i < daysInMonth; i++){
+            System.out.println("Day "+(i+1)+": ");
+            System.out.println("Enter the number of hours worked: ");
+            numberOfHours += keyboard.nextInt();
+        }
+        totalPay = rate * numberOfHours * daysInMonth;
+        tax = 0.3 * totalPay;
+        netPay = totalPay - tax;
+    }
 
-public void calculateTotalPay() {
-    int daysInMonth = 0;
-    if (month30.contains(month.toLowerCase())) {
-        daysInMonth = 30;
-    } else if (month31.contains(month.toLowerCase())) {
-        daysInMonth = 31;
-    } else if (month.equalsIgnoreCase("february")) {
-        daysInMonth = (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) ? 29 : 28;
-    }
-    for(int i = 0; i < daysInMonth; i++){
-        System.out.println("Day "+(i+1)+": ");
-        System.out.println("Enter the number of hours worked: ");
-        numberOfHours += keyboard.nextInt();
-    }
-    totalPay = rate * numberOfHours * daysInMonth;
-    tax = 0.3 * totalPay;
-    netPay = totalPay - tax;
-}
 
 public void printStaffDetails(){
         System.out.println("StaffNo: "+StaffNo);
