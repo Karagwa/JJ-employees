@@ -31,52 +31,29 @@ public class PartTime extends Employee{
 
 
     
-    //String[] month30 ={"April","June","September","November"};
-    //String [] month31={"January", "March","May","July","August","September","October","December"};
-    //String[] monthFeb={"February"};
-    ArrayList<String> month30=new ArrayList<>(Arrays.asList("april","june","september","november"));
-    ArrayList<String> month31=new ArrayList<>(Arrays.asList("march","may","july","august","september","october","december"));
-    public void calculateTotalPay() {
-         if (month30.contains(month.toLowerCase())) {
-            for(int i=0; i<30; i++){
-                System.out.println("Day "+(i+1)+": ");
-                System.out.println("Enter the number of hours worked: ");
-                numberOfHours+=keyboard.nextInt();
-            }
-            totalPay = 2500 * numberOfHours;
-        }
-        else if(month31.contains(month.toLowerCase())){
-            for(int i=0; i<31; i++){
-                System.out.println("Day "+(i+1)+": ");
-                System.out.println("Enter the number of hours worked: ");
-                numberOfHours+=keyboard.nextInt();
-            }
-            totalPay=2500*numberOfHours*31;
-        }
-        else{
-            if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)){
-            for(int i=0; i<29; i++){
-                System.out.println("Day "+(i+1)+": ");
-                System.out.println("Enter the number of hours worked: ");
-                numberOfHours+=keyboard.nextInt();
-            }
-                totalPay=2500*numberOfHours*29;
-        }
-            else{
-                for(int i=0; i<28; i++){
-                    System.out.println("Day "+(i+1)+": ");
-                    System.out.println("Enter the number of hours worked: ");
-                    numberOfHours+=keyboard.nextInt();
-                }
-                totalPay=2500*numberOfHours*28;
-            }
-        }
-        
+ArrayList<String> month30 = new ArrayList<>(Arrays.asList("april","june","september","november"));
+ArrayList<String> month31 = new ArrayList<>(Arrays.asList("january","march","may","july","august","october","december"));
+
+public void calculateTotalPay() {
+    int daysInMonth = 0;
+    if (month30.contains(month.toLowerCase())) {
+        daysInMonth = 30;
+    } else if (month31.contains(month.toLowerCase())) {
+        daysInMonth = 31;
+    } else if (month.equalsIgnoreCase("february")) {
+        daysInMonth = (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) ? 29 : 28;
     }
+    for(int i = 0; i < daysInMonth; i++){
+        System.out.println("Day "+(i+1)+": ");
+        System.out.println("Enter the number of hours worked: ");
+        numberOfHours += keyboard.nextInt();
+    }
+    totalPay = rate * numberOfHours * daysInMonth;
+    tax = 0.3 * totalPay;
+    netPay = totalPay - tax;
+}
 
-
-
-    public void printStaffDetails(){
+public void printStaffDetails(){
         System.out.println("StaffNo: "+StaffNo);
         System.out.println("StaffName: "+StaffName);
         System.out.println("StaffAge: "+StaffAge);
