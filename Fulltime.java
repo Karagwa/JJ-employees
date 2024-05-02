@@ -12,7 +12,16 @@ public class Fulltime extends Employee {
      * Constructs a Fulltime object and prompts the user to enter the monthly salary and tax deduction.
      */
     public Fulltime() {
+
         Scanner keyboard = new Scanner(System.in);
+        System.out.println("Enter the employee number:");
+        StaffNo = keyboard.nextInt();
+        keyboard.nextLine();
+        System.out.println("Enter the employee name:");
+        StaffName = keyboard.nextLine();
+        System.out.println("Enter the employee age:");
+        StaffAge = keyboard.nextInt();
+        keyboard.nextLine();
         System.out.println("Enter the monthly salary of the fulltime employee:");
         monthlyBasicSalary = keyboard.nextDouble();
         System.out.println("Enter the tax of the fulltime employee:");
@@ -46,10 +55,12 @@ public class Fulltime extends Employee {
 
         for (int i = 0; i < employees.length; i++) {
             employees[i] = new Fulltime();
+            System.out.println();
         }
 
         for (Fulltime fulltimeEmployee : employees) {
             fulltimeEmployee.printStaffDetails();
+            System.out.println();
         }
         keyboard.close();
     }
