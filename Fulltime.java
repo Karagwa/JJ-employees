@@ -1,10 +1,16 @@
 import java.util.Scanner;
 
+/**
+ * Represents a full-time employee.
+ */
 public class Fulltime extends Employee {
     private double monthlyBasicSalary;
     private double taxDeduction;
     private double netPay;
 
+    /**
+     * Constructs a Fulltime object and prompts the user to enter the monthly salary and tax deduction.
+     */
     public Fulltime() {
         Scanner keyboard = new Scanner(System.in);
         System.out.println("Enter the monthly salary of the fulltime employee:");
@@ -15,6 +21,9 @@ public class Fulltime extends Employee {
         keyboard.close();
     }
 
+    /**
+     * Prints the details of the full-time employee, including staff number, name, age, and net pay.
+     */
     public void printStaffDetails() {
         System.out.println("StaffNo: " + StaffNo);
         System.out.println("StaffName: " + StaffName);
@@ -22,6 +31,12 @@ public class Fulltime extends Employee {
         System.out.println("StaffSalary: " + netPay);
     }
 
+    /**
+     * The entry point of the program. Prompts the user to enter the number of full-time employees,
+     * creates an array of Fulltime objects, and prints the details of each employee.
+     *
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
         Scanner keyboard = new Scanner(System.in);
         System.out.println("Welcome to J and J enterprises.");
