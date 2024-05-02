@@ -18,7 +18,7 @@ public class Fulltime extends Employee {
         System.out.println("Enter the tax of the fulltime employee:");
         taxDeduction = keyboard.nextDouble();
         netPay = monthlyBasicSalary - taxDeduction;
-        keyboard.close();
+        
     }
 
     /**
